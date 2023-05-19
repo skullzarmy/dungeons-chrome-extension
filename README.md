@@ -52,7 +52,7 @@ Copyright (c) 2023 skllzrmy [Joe Peterson](https://joepeterson.work)
 
 ### LOGO COPYRIGHT
 
-![D brand logo](icons/icon48.png) (D Brand Logo) is wholly owned and copyrighted as follows:
+![D brand logo](icons/dungeons-icon.png) (D Brand Logo) is wholly owned and copyrighted as follows:
 
 Copyright (C) 2023 ASTRELION [License](https://gitlab.com/ASTRELION/dungeons-bot/-/raw/main/LICENSE)
 
@@ -60,6 +60,6 @@ Original source: https://gitlab.com/ASTRELION/dungeons-bot
 
 Original account: https://mastodon.social/@dungeons
 
-**This mark is used without express permission or license.**
+![Chrome Extension Logo](icons/icon48.png) (Extension Logo) is a derivative work, owned and copyrighted by Joe Peterson, with express permission. This logo is made fully available for fair and public use, whereas that use follows all guidelines set forth by Astrelion, owner of the original work, and does not infringe on any rights therein.
 
-**Use of this mark is not intended to convey affiliation with Astrelion**
+**Use of this mark is not intended to convey affiliation with Astrelion or the Dungeons game**
