@@ -1,4 +1,4 @@
-# Dungeons Character Dashboard: Chrome Extension
+# ![Chrome Extension Logo](icons/icon48.png) Dungeons Character Dashboard: Chrome Extension
 
 ![GitHub](https://img.shields.io/github/license/skullzarmy/dungeons-chrome-extension?style=for-the-badge)
 
