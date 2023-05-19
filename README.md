@@ -1,6 +1,6 @@
 # Dungeons Character Dashboard: Chrome Extension
 
-![GitHub](https://img.shields.io/github/license/skullzarmy/dungeons-chrome-extension?style=for-the-badge) ![Mastodon Follow](https://img.shields.io/mastodon/follow/109988942401723597?color=black&domain=https%3A%2F%2Fmastodon.social&label=Mastodon&logo=mastodon&logoColor=white&style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/skullzarmy/dungeons-chrome-extension?style=for-the-badge)
 
 A Manifest V3 Chrome Extension which loads current status information from [@dungeons@mastodon.social](https://mastodon.social/@dungeons)
 
