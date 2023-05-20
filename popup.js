@@ -88,12 +88,14 @@ async function fetchLatestPoll(dungeonsId) {
 
 function generateProgressBar(option, totalVotes, optionWinning = false) {
     return `<div class="poll-option ${optionWinning ? "winning-container" : ""}">
-        <span class="option-title">${option.title} <span class="option-votes ${
+        <span class="option-title">${DOMPurify.sanitize(option.title)} <span class="option-votes ${
         optionWinning ? "option-winning" : ""
-    }">(votes: ${option.votes_count})</span></span>
+    }">(votes: ${DOMPurify.sanitize(option.votes_count)})</span></span>
         <div class="progress-bar">
-            <div class="progress-bar-fill" style="flex-grow: ${option.votes_count}"></div>
-            <div class="progress-bar-remaining" style="flex-grow: ${totalVotes - option.votes_count}"></div>
+            <div class="progress-bar-fill" style="flex-grow: ${DOMPurify.sanitize(option.votes_count)}"></div>
+            <div class="progress-bar-remaining" style="flex-grow: ${
+                totalVotes - DOMPurify.sanitize(option.votes_count)
+            }"></div>
         </div>
     </div>`;
 }
