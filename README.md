@@ -2,6 +2,18 @@
 
 ![GitHub](https://img.shields.io/github/license/skullzarmy/dungeons-chrome-extension?style=for-the-badge)
 
+## snyk.io tested - 0 issues detected
+
+| [![the latest snky.io test results (png image)](icons/snyk-test-results-latest_thumb.png)](icons/snyk-test-results-latest.png) |
+| :----------------------------------------------------------------------------------------------------------------------------: |
+|                                                  click to see larger version                                                   |
+
+| ![Click to see the latest test results (png image)](icons/snyk-test-results-repo-breakdown.png) |
+| :---------------------------------------------------------------------------------------------: |
+|                                         repo breakdown                                          |
+
+---
+
 A Manifest V3 Chrome Extension which loads current status information from [@dungeons@mastodon.social](https://mastodon.social/@dungeons)
 
 [Dungeons](https://dungeons.astrelion.com/) is an open-source D&D 5e-style RPG, played via community poll, on Mastodon. It was created and is maintained by [Astrelion](https://mastodon.social/@astrelion). This project is NOT affiliated with Astrelion or [@dungeons](https://mastodon.social/@dungeons).
