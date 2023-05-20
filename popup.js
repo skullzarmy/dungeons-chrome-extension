@@ -18,7 +18,7 @@ async function fetchAndDisplayData() {
     const char = document.createElement("div");
     char.id = "character-data";
     char.classList.add("character-data");
-    char.innerHTML = data.note;
+    char.innerHTML = DOMPurify.sanitize(data.note);
     newContent.appendChild(char);
 
     if (poll) {
@@ -38,16 +38,18 @@ async function fetchAndDisplayData() {
 
         const pollContent = document.createElement("div");
         pollContent.classList.add("poll-content");
-        pollContent.innerHTML = `<h3>${poll.content}</h3>`;
+        pollContent.innerHTML = `<h3>${DOMPurify.sanitize(poll.content)}</h3>`;
         newContent.appendChild(pollContent);
 
         const votesCount = document.createElement("h3");
-        votesCount.innerHTML = `${pollData.votes_count} votes`;
+        votesCount.innerHTML = `Votes: ${DOMPurify.sanitize(pollData.votes_count)}`;
         newContent.appendChild(votesCount);
 
         const progressBarContainer = document.createElement("div");
         for (let option of pollData.options) {
-            const progressBar = generateProgressBar(option, totalVotes);
+            const optionWinning =
+                option.votes_count === Math.max(...pollData.options.map((option) => option.votes_count));
+            const progressBar = generateProgressBar(option, totalVotes, optionWinning);
             progressBarContainer.innerHTML += progressBar;
         }
         newContent.appendChild(progressBarContainer);
@@ -84,9 +86,11 @@ async function fetchLatestPoll(dungeonsId) {
     return data.find((status) => status.poll && !status.poll.expired);
 }
 
-function generateProgressBar(option, totalVotes) {
-    return `<div class="poll-option">
-        <span class="option-title">${option.title} (votes: ${option.votes_count})</span>
+function generateProgressBar(option, totalVotes, optionWinning = false) {
+    return `<div class="poll-option ${optionWinning ? "winning-container" : ""}">
+        <span class="option-title">${option.title} <span class="option-votes ${
+        optionWinning ? "option-winning" : ""
+    }">(votes: ${option.votes_count})</span></span>
         <div class="progress-bar">
             <div class="progress-bar-fill" style="flex-grow: ${option.votes_count}"></div>
             <div class="progress-bar-remaining" style="flex-grow: ${totalVotes - option.votes_count}"></div>

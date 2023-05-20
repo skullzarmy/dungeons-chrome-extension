@@ -28,7 +28,7 @@ body {
 #content {
     padding: 10px 0px;
     overflow-y: auto;
-    /* white-space: pre-wrap; */
+    width: 100%;
 }
 
 #footer {
@@ -112,10 +112,23 @@ body {
     width: 100%;
 }
 
+.winning-container {
+    /* background-color: rgba(76, 175, 79, 0.505); */
+}
+
 .option-title {
     font-weight: bold;
     margin-bottom: 5px;
     display: block;
+}
+
+.option-votes:not(.option-winning) {
+    color: #8f8f8f;
+    font-weight: 100;
+}
+
+.option-votes.option-winning {
+    color: #4caf50;
 }
 
 .progress-bar {
@@ -147,10 +160,11 @@ body {
 
 /* ANIMATIONS */
 .lds-hourglass {
-    display: inline-block;
+    display: block;
     position: relative;
     width: 80px;
     height: 80px;
+    margin: 0 auto;
 }
 .lds-hourglass:after {
     content: " ";
