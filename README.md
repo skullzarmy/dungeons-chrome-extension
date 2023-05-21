@@ -2,6 +2,8 @@
 
 ![GitHub](https://img.shields.io/github/license/skullzarmy/dungeons-chrome-extension?style=for-the-badge)
 
+[🚀 Download the latest release on Chrome Web Store 🚀](https://chrome.google.com/webstore/detail/dungeons-status/mhanemmhefbbdgoliknpiomibaglkdni/)
+
 ## snyk.io tested - 0 issues detected
 
 | [![the latest snky.io test results (png image)](icons/snyk-test-results-latest_thumb.png)](icons/snyk-test-results-latest.png) |
