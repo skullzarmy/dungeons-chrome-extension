@@ -62,24 +62,20 @@ body {
     align-items: center;
 }
 
-@media (prefers-color-scheme: light) {
-    body {
-        background-color: #fff;
-        color: #000;
-        border-color: #000;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #000;
-        color: #fff;
-        border-color: #fff;
-    }
-}
-
 .character-data {
     color: #8f8f8f;
+}
+
+.character-name {
+    font-weight: bold;
+    margin-bottom: 2px;
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 5px;
+    display: block;
+    text-align: center;
+    border-color: #f72929;
+    color: #f72929;
 }
 
 .button {
@@ -189,5 +185,21 @@ body {
     }
     100% {
         transform: rotate(1800deg);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #fff;
+        color: #000;
+        border-color: #000;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #000;
+        color: #fff;
+        border-color: #fff;
     }
 }

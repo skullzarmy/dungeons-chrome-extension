@@ -5,6 +5,8 @@ window.onload = () => {
 };
 
 async function fetchAndDisplayData() {
+    const icon = document.getElementById("tab-icon");
+    icon.src = "icons/icon48.gif";
     const dungeonsId = await getDungeonsId();
     const poll = await fetchLatestPoll(dungeonsId);
     const content = document.getElementById("content");
@@ -15,10 +17,20 @@ async function fetchAndDisplayData() {
 
     const newContent = document.createElement("div");
 
+    const parser = new DOMParser();
+    const noteElement = parser.parseFromString(DOMPurify.sanitize(data.note), "text/html");
+    const firstPTag = noteElement.querySelector("p");
+
+    if (firstPTag) {
+        const textParts = firstPTag.innerHTML.split("<br>");
+        textParts[0] = `<p class="character-name">${textParts[0]}</p>`;
+        firstPTag.innerHTML = textParts.join("<br>");
+    }
+
     const char = document.createElement("div");
     char.id = "character-data";
     char.classList.add("character-data");
-    char.innerHTML = DOMPurify.sanitize(data.note);
+    char.appendChild(noteElement.body.firstChild); // append the first child from the parsed element's body (i.e., the first p tag)
     newContent.appendChild(char);
 
     if (poll) {
@@ -42,7 +54,7 @@ async function fetchAndDisplayData() {
         newContent.appendChild(pollContent);
 
         const votesCount = document.createElement("h3");
-        votesCount.innerHTML = `Votes: ${DOMPurify.sanitize(pollData.votes_count)}`;
+        votesCount.innerHTML = `Votes: ${pollData.votes_count > 0 ? DOMPurify.sanitize(pollData.votes_count) : "0"}`;
         newContent.appendChild(votesCount);
 
         const progressBarContainer = document.createElement("div");
@@ -62,6 +74,7 @@ async function fetchAndDisplayData() {
     }
 
     // Replace the content with the new content
+    icon.src = "icons/icon48.png";
     content.innerHTML = newContent.innerHTML;
 
     // Make all links open in a new tab
@@ -90,12 +103,12 @@ function generateProgressBar(option, totalVotes, optionWinning = false) {
     return `<div class="poll-option ${optionWinning ? "winning-container" : ""}">
         <span class="option-title">${DOMPurify.sanitize(option.title)} <span class="option-votes ${
         optionWinning ? "option-winning" : ""
-    }">(votes: ${DOMPurify.sanitize(option.votes_count)})</span></span>
+    }">(votes: ${option.votes_count > 0 ? DOMPurify.sanitize(option.votes_count) : "0"})</span></span>
         <div class="progress-bar">
-            <div class="progress-bar-fill" style="flex-grow: ${DOMPurify.sanitize(option.votes_count)}"></div>
+            <div class="progress-bar-fill" style="flex-grow: ${DOMPurify.sanitize(option.votes_count)};"></div>
             <div class="progress-bar-remaining" style="flex-grow: ${
                 totalVotes - DOMPurify.sanitize(option.votes_count)
-            }"></div>
+            };"></div>
         </div>
     </div>`;
 }
@@ -106,7 +119,7 @@ function generateCountdown(countDownDate) {
         const distance = countDownDate - now;
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        document.getElementById("countdown").innerHTML = `ENDS IN: ${minutes}m ${seconds}s`;
+        document.getElementById("countdown").innerHTML = `POLL ENDS IN: ${minutes}m ${seconds}s`;
         if (distance < 0) {
             clearInterval(x);
             document.getElementById("countdown").innerHTML = `ENDED`;
