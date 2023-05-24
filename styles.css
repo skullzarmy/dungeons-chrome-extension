@@ -1,8 +1,11 @@
+html {
+}
+
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
     border: 0px solid #fff;
     border-radius: 15px;
 }
@@ -12,7 +15,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 350px;
+    min-width: 400px;
     min-height: 225px;
     box-sizing: border-box;
     padding: 0px 20px;
@@ -23,6 +26,27 @@ body {
     align-items: center;
     gap: 10px;
     padding-top: 20px;
+    font-family: "Almendra SC", serif;
+}
+
+#theme-switcher svg {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    width: 20px;
+}
+
+#sun-icon,
+#moon-icon {
+    fill: transparent;
+    transition: fill 0.5s ease, stroke 0.5s ease;
+}
+
+#sun-icon:hover,
+#moon-icon:hover {
+    fill: #f7b500;
+    stroke: #f7b500;
 }
 
 #content {
@@ -50,7 +74,6 @@ body {
 
 #footer hr {
     width: 100%;
-    /* margin: 0; */
 }
 
 #footer a {
@@ -62,20 +85,67 @@ body {
     align-items: center;
 }
 
-.character-data {
-    color: #8f8f8f;
+.mastodon-icon {
+    margin-bottom: -5px;
 }
 
 .character-name {
-    font-weight: bold;
-    margin-bottom: 2px;
-    border: 1px solid;
+    font-weight: bolder;
+    font-size: 1.35em;
+    margin-bottom: 5px;
+    border: 1px solid #777777;
     border-radius: 3px;
     padding: 5px;
     display: block;
     text-align: center;
-    border-color: #f72929;
-    color: #f72929;
+    /* border-color: transparent; */
+    background-color: #77777749;
+    cursor: grabbing;
+    text-transform: uppercase;
+    font-family: "Almendra SC", serif;
+    transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.character-data-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    gap: 6px;
+}
+
+.character-stats {
+    border: 1px solid #777777;
+    border-radius: 3px;
+    padding: 0px 6px;
+    background-color: #77777749;
+}
+
+.character-info {
+    border: 1px solid #777777;
+    border-radius: 3px;
+    padding: 6px;
+    background-color: #77777749;
+}
+
+.character-stats tr:first-child td {
+    border-bottom: 1px solid #777777;
+}
+
+.character-stats td {
+    padding: 1px 3px;
+    text-align: center;
+    /* border-right: 1px dotted #7777776e; */
+}
+
+.character-stats td:first-child {
+    padding-left: 0px;
+}
+
+.character-stats td:last-child {
+    padding-right: 0px;
+    border-right: 0px;
 }
 
 .button {
@@ -95,10 +165,6 @@ body {
 
 .button:hover {
     background-color: #2f0c7a;
-}
-
-.poll-content {
-    color: #8f8f8f;
 }
 
 .poll-option {
@@ -129,20 +195,33 @@ body {
 
 .progress-bar {
     height: 5px;
-    background-color: #ddd;
+    background-color: #dddddd3d;
     display: flex;
     width: 100%;
+    border-radius: 5px;
 }
 
 .progress-bar-fill {
     height: 100%;
     background-color: #4caf50;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
-.countdown-progress-bar {
-    height: 20px;
-    background-color: #4caf50;
-    width: 0%;
+#countdown .progress-bar {
+    height: 2px;
+    background-color: #dddddd1e;
+    display: flex;
+    width: 100%;
+    margin: 5px 0px 10px 0px;
+    border-radius: 1px;
+}
+
+#countdown .progress-bar-fill {
+    height: 2px;
+    background-color: #f72929;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
 }
 
 .sub-footer {
@@ -162,7 +241,15 @@ body {
     height: 80px;
     margin: 0 auto;
 }
-.lds-hourglass:after {
+
+.lds-hourglass.tiny {
+    width: 10px;
+    height: 10px;
+    margin: 0px;
+}
+
+.lds-hourglass:after,
+.lds-hourglass.tiny:after {
     content: " ";
     display: block;
     border-radius: 50%;
@@ -170,10 +257,30 @@ body {
     height: 0;
     margin: 8px;
     box-sizing: border-box;
-    border: 32px solid #fff;
-    border-color: #fff transparent #fff transparent;
     animation: lds-hourglass 1.2s infinite;
 }
+
+body .lds-hourglass:after {
+    border: 32px solid #000;
+    border-color: #000 transparent #000 transparent;
+}
+
+body .lds-hourglass.tiny:after {
+    margin: 5px;
+    border: 5px solid #000;
+    border-color: #000 transparent #000 transparent;
+}
+
+body.dark-mode .lds-hourglass:after {
+    border: 32px solid #fff;
+    border-color: #fff transparent #fff transparent;
+}
+
+body.dark-mode .lds-hourglass.tiny:after {
+    border: 5px solid #fff;
+    border-color: #fff transparent #fff transparent;
+}
+
 @keyframes lds-hourglass {
     0% {
         transform: rotate(0);
@@ -188,12 +295,44 @@ body {
     }
 }
 
-@media (prefers-color-scheme: light) {
-    body {
-        background-color: #fff;
-        color: #000;
-        border-color: #000;
-    }
+body {
+    background-color: #fff;
+    color: #000;
+    border-color: #000;
+}
+
+body.dark-mode {
+    background-color: #000;
+    color: #fff;
+    border-color: #fff;
+}
+
+.poll-content {
+    color: #242424;
+}
+
+.character-data {
+    color: #242424;
+}
+
+body.dark-mode .poll-content {
+    color: #8f8f8f;
+}
+
+body.dark-mode .character-data {
+    color: #8f8f8f;
+}
+
+.character-name {
+    /* border-color: transparent; */
+    /* background-color: #c5c5c5; */
+    color: #000;
+}
+
+body.dark-mode .character-name {
+    /* border-color: transparent; */
+    /* background-color: #252525; */
+    color: #fff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -201,5 +340,144 @@ body {
         background-color: #000;
         color: #fff;
         border-color: #fff;
+    }
+
+    body.light-mode {
+        background-color: #fff;
+        color: #000;
+        border-color: #000;
+    }
+
+    .poll-content {
+        color: #8f8f8f;
+    }
+
+    .character-data {
+        color: #8f8f8f;
+    }
+
+    body.light-mode .poll-content {
+        color: #242424;
+    }
+
+    body.light-mode .character-data {
+        color: #242424;
+    }
+
+    .character-name {
+        color: #fff;
+    }
+
+    body.light-mode .character-name {
+        color: #000;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    @-webkit-keyframes wiggle {
+        0%,
+        50%,
+        to {
+            transform: rotate(0);
+        }
+
+        12.5%,
+        37.5% {
+            transform: rotate(2.5deg);
+        }
+
+        25% {
+            transform: rotate(3deg);
+        }
+
+        62.5%,
+        87.5% {
+            transform: rotate(-2.5deg);
+        }
+
+        75% {
+            transform: rotate(-3deg);
+        }
+    }
+
+    @keyframes wiggle {
+        0%,
+        50%,
+        to {
+            transform: rotate(0);
+        }
+
+        12.5%,
+        37.5% {
+            transform: rotate(2.5deg);
+        }
+
+        25% {
+            transform: rotate(3deg);
+        }
+
+        62.5%,
+        87.5% {
+            transform: rotate(-2.5deg);
+        }
+
+        75% {
+            transform: rotate(-3deg);
+        }
+    }
+
+    .motion-safe-animate-wiggle:hover,
+    .motion-safe-animate-wiggle-wrapper:hover .motion-safe-animate-wiggle {
+        -webkit-animation: wiggle 1s ease-in-out infinite;
+        animation: wiggle 1s ease-in-out infinite;
+    }
+    @-webkit-keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+
+        0% {
+            transform: rotate(0);
+        }
+
+        33.3% {
+            transform: rotate(-90deg);
+        }
+
+        66.6% {
+            transform: rotate(180deg);
+        }
+
+        to {
+            transform: rotate(-360deg);
+        }
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+
+        0% {
+            transform: rotate(0);
+        }
+
+        33.3% {
+            transform: rotate(-90deg);
+        }
+
+        66.6% {
+            transform: rotate(180deg);
+        }
+
+        to {
+            transform: rotate(-360deg);
+        }
+    }
+
+    .motion-safe-animate-spin:hover,
+    .motion-safe-animate-spin-wrapper:hover .motion-safe-animate-spin {
+        -webkit-animation: spin 1.5s ease-in-out;
+        animation: spin 1.5s ease-in-out;
     }
 }

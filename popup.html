@@ -1,29 +1,61 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Almendra+SC&display=swap" rel="stylesheet" />
+    </head>
     <body>
         <div id="app">
             <div id="header">
-                <a href="https://mastodon.social/@dungeons"
+                <a title="Vote now on Mastodon!" alt="Vote now on Mastodon!" href="https://mastodon.social/@dungeons"
                     ><img id="tab-icon" src="icons/icon48.png" alt="Click to visit Dungeons on Mastodon"
                 /></a>
                 <h1>Character Status</h1>
+                <div id="theme-switcher">
+                    <i data-feather="sun" title="Set Light Mode" id="sun-icon"></i>
+                    <i data-feather="moon" title="Set Dark Mode" id="moon-icon" style="display: none"></i>
+                </div>
             </div>
             <div id="content">
                 <div class="lds-hourglass"></div>
             </div>
             <div id="footer">
                 <div class="sub-footer">
-                    <a href="https://dungeons.astrelion.com/">Dungeons homepage</a> |
-                    <a href="https://mastodon.social/@dungeons">Dungeons on Mastodon</a> |
-                    <a href="https://mastodon.social/@astrelion">Astrelion on Mastodon</a>
+                    <a
+                        title="Click to view more info on the Dungeons website"
+                        alt="Click to view more info on the Dungeons website"
+                        href="https://dungeons.astrelion.com/"
+                        >Dungeons homepage</a
+                    >
+                    |
+                    <a
+                        title="Click to visit Dungeons on Mastodon"
+                        alt="Click to visit Dungeons on Mastodon"
+                        href="https://mastodon.social/@dungeons"
+                        >Dungeons on Mastodon</a
+                    >
+                    |
+                    <a
+                        title="Click to visit Astrelion on Mastodon"
+                        alt="Click to visit Astrelion on Mastodon"
+                        href="https://mastodon.social/@astrelion"
+                        >Astrelion on Mastodon</a
+                    >
                 </div>
-                <a href="https://joepeterson.work/"
-                    ><img src="icons/jp-logo-iso-sm.png" alt="Joe's logo" width="25" /> extension by Joe Peterson</a
+                <a
+                    title="Click to visit Joe Peterson's website"
+                    alt="Click to visit Joe Peterson's website"
+                    href="https://joepeterson.work/"
+                    class="motion-safe-animate-spin-wrapper"
+                    ><img src="icons/jp-logo-iso-sm.png" alt="Joe's logo" width="25" class="motion-safe-animate-spin" />
+                    extension by Joe Peterson</a
                 >
             </div>
         </div>
         <link rel="stylesheet" href="styles.css" />
         <script src="vendor/dompurify/2.3.3/purify.min.js"></script>
+        <script src="vendor/feather-icons/4.29.0/feather.min.js"></script>
         <script src="popup.js"></script>
     </body>
 </html>
